@@ -1,0 +1,28 @@
+{
+  "name": "pomogo",
+  "bin": "./index.js",
+  "version": "1.0.0",
+  "description": "Pomodoro timer for NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natanloterio/pomodoro-cli.git"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer"
+  ],
+  "author": "Natan Loterio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natanloterio/pomodoro-cli/issues"
+  },
+  "homepage": "https://github.com/natanloterio/pomodoro-cli#readme",
+  "dependencies": {
+    "play-sound": "^1.1.3",
+    "yargs": "^15.3.1"
+  }
+}
