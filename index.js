@@ -9,7 +9,7 @@ const reg = {id:0}
 
 function alarm(){
     player.play('finish.mp3',function(err){
-        if (err) throw err
+        if (err) console.log(err)
       });
       console.log("Well Done!")
       notifier.notify(
