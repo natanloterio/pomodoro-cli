@@ -29,7 +29,7 @@ function alarm(){
 function startTimer(timeout){
     now = new Date();
     player.play('start.mp3',function(err){
-        if (err) throw err
+        if (err) console.log(err)
       });    
     console.log("starting now:"+now)
     console.log("work until:"+new Date(now.getTime()+timeout))
