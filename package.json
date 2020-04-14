@@ -1,7 +1,7 @@
 {
   "name": "pomogo",
   "bin": "./index.js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Pomodoro timer for NodeJS",
   "main": "index.js",
   "files": [
