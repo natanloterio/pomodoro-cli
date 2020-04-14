@@ -5,7 +5,12 @@ const player = require('play-sound')(opts = {})
 const notifier = require('node-notifier');
 const path = require('path');	
 const colors = require('colors');
-const reg = {id:0}
+const reg = {
+              id:0,
+              startTime:0,
+              endTime:0
+            }
+
 
 function alarm(){
     player.play('finish.mp3',function(err){
@@ -26,14 +31,28 @@ function alarm(){
       );
 }
 
+function startConsoleUpdate(endTime){
+  if((new Date().getTime() + 1000) < endTime.getTime()){
+    remainingTime =(endTime.getTime() - (new Date().getTime() + 1000))/1000
+    remainingTimeMinutes = Math.round(remainingTime/60)
+    console.clear();
+    console.log("Remaining:"+remainingTimeMinutes+" minutes")
+    setTimeout(function(){ startConsoleUpdate(endTime); }, 1000);
+  }
+}
+
 function startTimer(timeout){
-    now = new Date();
+    reg.startTime = new Date();
+    reg.endTime = new Date(reg.startTime.getTime()+timeout);
+
     player.play('start.mp3',function(err){
-        if (err) console.log(err)
+        //if (err) console.log(err)
       });    
-    console.log("starting now:"+now)
-    console.log("work until:"+new Date(now.getTime()+timeout))
+    console.log("starting now:"+reg.startTime)
+    console.log("work until:"+reg.endTime)
     reg.id = setTimeout(alarm,timeout)
+    
+    startConsoleUpdate(reg.endTime)
 }
 
 const argv = yargs
@@ -70,5 +89,3 @@ process.on('SIGINT', function() {
 startTimer(duration*60*1000);
 
 
-
-console.log("%cThis is a %cConsole.log", "background:black ; color: white", "color: red; font-size:25px");
